@@ -18,7 +18,7 @@ To contribute, either start or comment in an issue for the related topic, or for
 ## Guidelines for issues / discussions
 
 Since this repo contains documents for many different subjects, issues should be prefixed with the
-document they are discussing, for example a discussion around a specific aspect of AS-2 ( Gateway capabilities endpoint ) should be titled like: `"AS-101: Some Topic"` or `"AS-101: General"`. This applies to the AS documents and all other documents in this repository.
+document they are discussing, for example a discussion around a specific aspect of AS-101 ( Gateway capabilities endpoint ) should be titled like: `"AS-101: Some Topic"` or `"AS-101: General"`. This applies to the AS documents and all other documents in this repository.
 
 For issues regarding the repository itself, issues can be opened with no prefix.
 
