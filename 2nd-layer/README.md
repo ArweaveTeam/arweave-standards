@@ -6,6 +6,6 @@ There are different approaches and models to building on top of Arweave, so this
 
 - Custom Gateways
 - Native Apps that access the blockchain directly
-- Local proxies, caches, etc, that provide acccess to user apps
+- Local proxies, caches, etc, that provide access to user apps
 
 This is the most informal of the sections at this time
