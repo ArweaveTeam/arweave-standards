@@ -24,7 +24,7 @@ For issues regarding the repository itself, issues can be opened with no prefix.
 
 ## Sections
 
-[Specifications and Drafts](specs)
+[Arweave Network Standards](ans)
 
 [Best Practices and Tag Formats](best-practices)
 
