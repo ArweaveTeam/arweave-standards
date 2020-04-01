@@ -7,7 +7,7 @@ This document is meant as an example, to highlight how a 2nd layer service can b
 
 ## Description of arweave-id and initial problem
 
-arweave-id names are registered by mining a transaction with a certain data schema, and that transaction says `my arweave-id is Bill Gates`. To lookup an arweave-id for a given wallet address, you query for a transaction from that wallet address, matching that data schema, you get the latest transaction, and you have that persons arweave-id.
+arweave-id names are registered by mining a transaction with a certain data schema, and that transaction says `my arweave-id is Bill Gates`. To lookup an arweave-id for a given wallet address, you query for a transaction from that wallet address matching that data schema, get the latest transaction, and you have that persons arweave-id.
 
 This is a simple scheme but has two problems:
 
