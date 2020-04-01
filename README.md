@@ -3,7 +3,7 @@
 
 This repository contains:
 
-- Drafts and finalized specifications for data formats, tag formats, data protocols, custom gateway features or anything that is built on top of the Arweave Network and needs to be standardized.
+- Arweave Network Standards (ANS documents). Drafts and finalized standards for data formats, tag formats, data protocols, custom gateway features and anything that is built on top the Arweave Network.
 
 - General best practices, for example, on how to format data, what already existing specifications should be re-used.
 
