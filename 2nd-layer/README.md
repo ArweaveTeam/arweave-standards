@@ -5,6 +5,7 @@ There are different approaches and models to building on top of Arweave, so this
 2nd layer, in this context, refers to anything that is not just a pure node on the network.
 
 - Custom Gateways
+- Gateway Features
 - Native Apps that access the blockchain directly
 - Local proxies, caches, etc, that provide access to user apps
 
