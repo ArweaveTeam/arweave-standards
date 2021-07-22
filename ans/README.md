@@ -6,4 +6,4 @@ This folder contains standards in either draft or finalized form.
   
 [ANS-102 Bundled Data - JSON Serialization - Standard](ANS-102.md)
 
-[ANS-103 Succinct Proofs of Random Access - Draft](ANS-103.md)
+[ANS-103 Succinct Proofs of Random Access - Standard](ANS-103.md)
