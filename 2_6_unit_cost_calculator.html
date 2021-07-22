@@ -1,0 +1,347 @@
+<html>
+    <head>
+        <title>Compare Unit Costs</title>
+        <style>
+.table {
+    border-collapse:collapse;
+}
+
+input {
+    width: 100px;
+}
+
+.table>tbody>tr {
+    border: 1px solid #a2a9b1;
+    padding: 0.2em 0.4em;
+}
+
+.table>tbody>tr>th {
+    border: 1px solid #a2a9b1;
+    padding: 0.2em 0.4em;
+    background-color: #eaecf0;
+}
+
+.table>tbody>tr>td {
+    border: 1px solid #a2a9b1;
+    padding: 0.2em 0.4em;
+    background-color: #f8f9fa;
+}
+        </style>
+    </head>
+    <body>
+        <table>
+            <tbody>
+                <tr>
+                    <td style="vertical-align:top">
+                        <h3>Benchmark Hardware</h3>
+                        <table class="table">
+                            <thead>
+                                <td></td>
+                                <td>Cost ($ per CPU or 1 TiB of storage)</td>
+                                <td>Hashrate (h/s)</td>
+                                <td>Chunk Processing Rate</td>
+                                <td>Sequential Read (MiB/s)</td>
+                                <td>Power Consumption (Watt)</td>
+                                <td>Lifetime (years)</td>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>On-demand Packing CPU</td>
+                                    <td><input type=number id="on_demand_cpu_cost" value="1600" oninput="refresh()"></td>
+                                    <td><input type=number id="on_demand_cpu_hashrate" value="30000" oninput="refresh()"></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><input type=number id="on_demand_cpu_watt" value="260" oninput="refresh()"></td>
+                                    <td><input type=number id="on_demand_cpu_lifetime" value="7" oninput="refresh()"></td>
+                                </tr>
+                                <tr>
+                                    <td>Honest Mining CPU</td>
+                                    <td><input type=number id="cpu_cost" value="250" oninput="refresh()"></td>
+                                    <td>-</td>
+                                    <td><input type=number id="chunk_processing_rate" value="40000" oninput="refresh()"></td>
+                                    <td>-</td>
+                                    <td><input type=number id="cpu_watt" value="65" oninput="refresh()"></td>
+                                    <td><input type=number id="cpu_lifetime" value="7" oninput="refresh()"></td>
+                                </tr>
+                                <tr>
+                                    <td>Additional Costs</td>
+                                    <td><input type=number id="extra_cpu_cost" value="280" oninput="refresh()"></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                                <tr>
+                                    <td>SSD</td>
+                                    <td><input type=number id="ssd_disk_cost" value="230" oninput="refresh()"></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><input type=number id="ssd_read_rate" value="7000" oninput="refresh()"></td>
+                                    <td><input type=number id="ssd_disk_watt" value="5" oninput="refresh()"></td>
+                                    <td><input type=number id="ssd_disk_lifetime" value="5" oninput="refresh()"></td>
+                                </tr>
+                                <tr>
+                                    <td>HDD</td>
+                                    <td><input type=number id="disk_cost" value="10" oninput="refresh()"></td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td><input type=number id="read_rate" value="200" oninput="refresh()"></td>
+                                    <td><input type=number id="disk_watt" value="2" oninput="refresh()"></td>
+                                    <td><input type=number id="disk_lifetime" value="4" oninput="refresh()"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3>Electricity</h3>
+                        <table class="table">
+                            <tbody>
+                                <td>Kilowatt-Hour Cost</td>
+                                <td><input type=number id="kilowatt_hour_cost" value="0.068" oninput="refresh()"></td>
+                            </tbody>
+                        </table>
+                        <h3>Protocol Parameters</h3>
+                        <table class="table">
+                            <tbody>
+                                <td>Search Space Size (TiB)</td>
+                                <td><input type=number id="search_space_size" value="4" oninput="refresh()"></td>
+                                <td>Recall Space Size (MiB)</td>
+                                <td><input type=number id="recall_space_size" value="200" oninput="refresh()"></td>
+                                <td>Packing Difficulty (RandomX h/chunk)</td>
+                                <td><input type=number id="packing_difficulty" value="30" oninput="refresh()"></td>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td style="vertical-align:top">
+                        <h3>Results</h3>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td colSpan=2><b>On-Demand Mining</b></td>
+                                </tr>
+                                <tr>
+                                    <td>Unit Packing Cost (USD)</td>
+                                    <td style="text-align:right"><span id="on_demand_packing_cost"></span></td>
+                                </tr>
+                                <!--<tr>
+                                    <td>Unit Nonce Limiter Cost (USD)</td>
+                                    <td style="text-align:right"><span id="nonce_limiter_cost"></span></td>
+                                    </tr>-->
+                                    <tr>
+                                        <td>Total (USD)</td>
+                                        <td style="text-align:right"><span id="on_demand_total_cost"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan=2><b>Honest Mining</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>CPU Cost (USD)</td>
+                                        <td style="text-align:right"><span id="honest_cpu_cost"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Read Cost (USD)</td>
+                                        <td style="text-align:right"><span id="read_cost"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total (USD)</td>
+                                        <td style="text-align:right"><span id="honest_total_cost"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan=2><b>On-Demand Cost / Honest Cost</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align:right"><span id="cost_ratio"></span></td>
+                                    </tr>
+                                    <!--<tr>
+                                        <td colSpan=2><b>On-Demand Pool Worker Cost / Honest Pool Worker Cost</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align:right"><span id="pool_cost_ratio"></span></td>
+                                    </tr>-->
+                                    <tr>
+                                        <td colSpan=2><b>On-Demand CPU Packs TiB/day</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align:right"><span id="single_miner_throughput"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan=2><b>Honest SSD Mining</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Read Cost (USD)</td>
+                                        <td style="text-align:right"><span id="ssd_read_cost"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total (USD)</td>
+                                        <td style="text-align:right"><span id="ssd_honest_total_cost"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan=2><b>Honest SSD Costs / Honest HDD Costs</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align:right"><span id="ssd_hdd_cost_ratio"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan=2><b>2.5 Unit Consumption Cost Share</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align:right"><span id="2_5_unit_consumption_cost_share"></span>%</td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan=2><b>2.6 Unit Consumption Cost Share</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align:right"><span id="2_6_unit_consumption_cost_share"></span>%</td>
+                                    </tr>
+                                    <tr>
+                                        <td colSpan=2><b>2.6 SSD Unit Consumption Cost Share</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td style="text-align:right"><span id="2_6_ssd_unit_consumption_cost_share"></span>%</td>
+                                    </tr>
+
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+            window.refresh = function() {
+                var unit_cost =
+                    function(cost, rate, lifetime, consumption, kilowatt_hour_cost) {
+                        return (cost +
+                            consumption * lifetime * 365 * 24 * kilowatt_hour_cost / 1000)
+                                / (rate * lifetime * 365 * 24 * 60 * 60)
+                    };
+                var unit_consumption_cost =
+                    function(rate, lifetime, consumption, kilowatt_hour_cost) {
+                        return (consumption * lifetime * 365 * 24 * kilowatt_hour_cost / 1000)
+                                / (rate * lifetime * 365 * 24 * 60 * 60)
+                    };
+                var get_value =
+                    function(id) {
+                        return document.getElementById(id).valueAsNumber
+                    };
+
+                var packing_difficulty = get_value("packing_difficulty");
+                var on_demand_packing_cost = unit_cost(get_value("on_demand_cpu_cost")
+                        + get_value("extra_cpu_cost"),
+                        get_value("on_demand_cpu_hashrate") / packing_difficulty,
+                        get_value("on_demand_cpu_lifetime"),
+                        get_value("on_demand_cpu_watt"),
+                        get_value("kilowatt_hour_cost"));
+
+                var read_rate = get_value("read_rate");
+                var recall_space_size = get_value("recall_space_size");
+                var cpu_cost = unit_cost(get_value("cpu_cost") + get_value("extra_cpu_cost"),
+                        get_value("chunk_processing_rate"),
+                        get_value("cpu_lifetime"), get_value("cpu_watt"),
+                        get_value("kilowatt_hour_cost"));
+                var cpu_cost_no_consumption = unit_cost(
+                        get_value("cpu_cost") + get_value("extra_cpu_cost"),
+                        get_value("chunk_processing_rate"),
+                        get_value("cpu_lifetime"), get_value("cpu_watt"), 0);
+
+                var search_space_size = get_value("search_space_size");
+                var read_cost =
+                    //        from every so many terabytes bought
+                    unit_cost(get_value("disk_cost") * search_space_size,
+                            //        we get this many chunks per second
+                            Math.min(read_rate, recall_space_size) * 4,
+                            get_value("disk_lifetime"),
+                            get_value("disk_watt") * search_space_size,
+                            get_value("kilowatt_hour_cost"));
+                var read_cost_no_consumption =
+                    unit_cost(get_value("disk_cost") * search_space_size,
+                            Math.min(read_rate, recall_space_size) * 4,
+                            get_value("disk_lifetime"),
+                            get_value("disk_watt") * search_space_size,
+                            0);
+
+                var precision = 12;
+                document.getElementById("on_demand_packing_cost").innerText
+                    = on_demand_packing_cost.toFixed(precision);
+                var on_demand_total = on_demand_packing_cost;
+                document.getElementById("on_demand_total_cost").innerText
+                    = on_demand_total.toFixed(precision);
+
+                var total = read_cost + cpu_cost;
+                document.getElementById("read_cost").innerText
+                    = read_cost.toFixed(precision);
+                document.getElementById("honest_cpu_cost").innerText
+                    = cpu_cost.toFixed(precision);
+                document.getElementById("honest_total_cost").innerText
+                    = total.toFixed(precision);
+                document.getElementById("cost_ratio").innerText
+                    = (on_demand_total / total).toFixed(2);
+ 
+                document.getElementById("single_miner_throughput").innerText
+                    = (60 * 60 * 24
+                        * (((get_value("on_demand_cpu_hashrate") / packing_difficulty) / 4)
+                            / (1024 * 1024))).toFixed(precision);
+
+                var ssd_read_rate = get_value("ssd_read_rate");
+                var ssd_read_cost =
+                    unit_cost(get_value("ssd_disk_cost") * search_space_size,
+                            Math.min(ssd_read_rate, recall_space_size) * 4,
+                            get_value("ssd_disk_lifetime"),
+                            get_value("ssd_disk_watt") * search_space_size,
+                            get_value("kilowatt_hour_cost"));
+                var ssd_read_cost_no_consumption =
+                    unit_cost(get_value("ssd_disk_cost") * search_space_size,
+                            Math.min(ssd_read_rate, recall_space_size) * 4,
+                            get_value("ssd_disk_lifetime"),
+                            get_value("ssd_disk_watt") * search_space_size,
+                            0);
+
+                document.getElementById("ssd_read_cost").innerText
+                    = ssd_read_cost.toFixed(precision);
+                var ssd_total = ssd_read_cost + cpu_cost;
+                document.getElementById("ssd_honest_total_cost").innerText
+                    = ssd_total.toFixed(precision);
+
+                document.getElementById("ssd_hdd_cost_ratio").innerText
+                    = (ssd_total / total).toFixed(2);
+
+                // We assume no synchronization costs,
+                // i.e., free infinite-bandwidth links between CPUs.
+                var unit_consumption_cost_2_5 =
+                    unit_consumption_cost(
+                            get_value("on_demand_cpu_hashrate") / 2,
+                            get_value("on_demand_cpu_lifetime"),
+                            get_value("on_demand_cpu_watt"),
+                            get_value("kilowatt_hour_cost"));
+                var unit_cost_2_5 =
+                    unit_cost(
+                            get_value("on_demand_cpu_cost"),
+                            get_value("on_demand_cpu_hashrate") / 2,
+                            get_value("on_demand_cpu_lifetime"),
+                            get_value("on_demand_cpu_watt"),
+                            get_value("kilowatt_hour_cost"));
+                var unit_consumption_cost_share_2_5 = unit_consumption_cost_2_5 / unit_cost_2_5;
+                var unit_consumption_cost_share_2_6
+                     = (read_cost - read_cost_no_consumption
+                        + cpu_cost - cpu_cost_no_consumption) / total;
+                var ssd_unit_consumption_cost_share_2_6
+                    = (ssd_read_cost - ssd_read_cost_no_consumption
+                        + cpu_cost - cpu_cost_no_consumption) / ssd_total;
+                document.getElementById("2_5_unit_consumption_cost_share").innerText
+                    = unit_consumption_cost_share_2_5.toFixed(2) * 100;
+                document.getElementById("2_6_unit_consumption_cost_share").innerText
+                    = unit_consumption_cost_share_2_6.toFixed(2) * 100;
+                document.getElementById("2_6_ssd_unit_consumption_cost_share").innerText
+                    = ssd_unit_consumption_cost_share_2_6.toFixed(2) * 100;
+
+            }
+            refresh();
+        </script>
+    </body>
+</html>
