@@ -12,7 +12,7 @@ Preferably the wallet should notify the user in an understandable way every time
 
 ## The global API object
 
-All web wallet extensions should provide (inject) a field inside the browsers `window` object called `arweaveWallet`. This can be accessed via `window.arweaveWallet`. An example `d.ts` file of this object can be found in [injected-api.d.ts](injected-api.d.ts).
+All web wallet extensions should provide (inject) a field inside the browser's `window` object called `arweaveWallet`. This can be accessed via `window.arweaveWallet`. An example `d.ts` file of this object can be found in [injected-api.d.ts](injected-api.d.ts).
 
 ### Indicating the injection of the API object
 
