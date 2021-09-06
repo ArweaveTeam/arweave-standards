@@ -1,6 +1,6 @@
 # Arweave Web Wallet Extensions
 
-This file demonstrates how an Arweave Web Wallet Extension should structure it's API so that all dApps, as well as `arweave-js` can use it properly. An implementation of this can be found at [th8ta/ArConnect](https://github.com/th8ta/ArConnect).
+This file demonstrates how an Arweave Web Wallet Extension should structure its API so that all dApps, as well as `arweave-js`, can use it properly. An implementation of this can be found at [th8ta/ArConnect](https://github.com/th8ta/ArConnect).
 
 ## Logic of the wallet
 
