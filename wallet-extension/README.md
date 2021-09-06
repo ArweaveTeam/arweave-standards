@@ -8,7 +8,7 @@ Arweave web wallet extensions are not just simple middlewares to sign transactio
 
 A wallet extension should provide specific permissions for the API calls that the user has to approve. To do this, the extension should show a popup window on *connect*, to ask the user for these permissions. Ideally the wallet should also provide some sort of limitation of how much the specific dApp can spend from the user's wallet, because the popup won't show on each transaction signing.
 
-Preferably the wallet should notify the user in an understandable way every time a transaction signing occurs.
+Preferably the wallet should notify the user in an understandable way every time a transaction signing event occurs.
 
 ## The global API object
 
