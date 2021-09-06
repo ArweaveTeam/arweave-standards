@@ -109,4 +109,4 @@ The user needs to define at least one of these permissions when connecting, in a
 
 ## Trust
 
-It is important that the community and the userbase should trust in your extension, and other extensions. To gain this trust, wallet extensions should be open source and accessible to the public. Clearly explaining how it works, how it takes fees and how it guards the users' keyfiles is also necessary.
+To gain trust and ensure transparency, wallet extensions should be open source and accessible to the public. Clearly explaining how they work, if/how they take fees, and how they guard users' keyfiles is strongly recommended.
