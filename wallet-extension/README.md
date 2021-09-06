@@ -32,7 +32,7 @@ window.addEventListener("arweaveWalletLoaded", () => {
 
 ### Wallet Switch Event
 
-If the extension provides multi-wallet support (the user is able to add more than 1 keyfiles to the extension), the wallet extension should always fire a custom event (`walletSwitch`), with the new address associated to the active keyfile as a parameter. The extension can choose to only fire the event if the app has the permissions `ACCESS_ADDRESS` or `ACCESS_ALL_ADDRESSES`.
+If the extension provides multi-wallet support (the user is able to add more than 1 keyfile to the extension), the wallet extension should always fire a custom event (`walletSwitch`), with the new address associated to the active keyfile as a parameter. The extension can choose to only fire the event if the app has the permissions `ACCESS_ADDRESS` or `ACCESS_ALL_ADDRESSES`.
 
 The event can be fired at the injected script:
 
