@@ -55,11 +55,13 @@ owner() => string | undefined
 - Returns the address of the current owner of the Atomic Asset (base64url)
 
 ```ts
-transferOwnership(to: string) => 
+transferOwnership(to: string | undefined) => void
 ```
 
 - Transfers ownership of the Atomic Asset to address `to` (base64url)
-- SHOULD throw if the caller is not the `owner`
+- Transfer of ownership to `undefined` is possible to delegate ownership to
+  alternative mechanisms
+- SHOULD throw if the caller is not the current `owner`
 
 ### State
 
