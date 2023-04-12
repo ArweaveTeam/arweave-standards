@@ -22,11 +22,11 @@ A typical Arweave provenance flow might work like this:
 
 1. Immutable Transaction `owner`
 
-    *[may signal delecation to]*
+    *[may signal delegation to]*
 
 2. Contract State `owner`
 
-    *[may signal delecation to]*
+    *[may signal delegation to]*
 
 3. Any ownership scheme or logic (e.g. multiple owners, public domain, etc.)
 
