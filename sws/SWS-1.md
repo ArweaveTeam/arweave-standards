@@ -2,7 +2,7 @@
 
 **Status:** Draft `v0.0.1`
 
-**Authors:** Atticus, Jim Toth ([jim@artby.city](mailto:jim@artby.city)), et al (let's credit everyone who contributed)
+**Authors:** Atticus, Jim Toth ([jim@artby.city](mailto:jim@artby.city)), Tom Wilson (tom@hyper.io), et al (let's credit everyone who contributed)
 
 ## Abstract
 
