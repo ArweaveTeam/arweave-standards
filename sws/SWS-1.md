@@ -36,9 +36,9 @@ A typical Arweave provenance flow might work like this:
 
 ### Signaling Atomic Assets
 
-In order to query for Arweave transactions that are atomic assets, it is
-encouraged to include specific tags in order to signal the transaction meets the
-technical definition of an atomic asset as described above.
+In order to query for Arweave transactions that meet the technical definition of
+atomic assets as described above, it is encouraged to include specific tags on
+the transaction in order to signal this.
 
 To accomplish this, a combination of two pre-existing tag specifications should
 be included on the atomic asset transaction: `App-Name` as required by
