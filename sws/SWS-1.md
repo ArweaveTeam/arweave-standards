@@ -2,7 +2,7 @@
 
 **Status:** Draft `v0.0.1`
 
-**Authors:** Atticus, Jim Toth ([jim@artby.city](mailto:jim@artby.city)), Tom Wilson (tom@hyper.io), et al (let's credit everyone who contributed)
+**Authors:** Atticus (atticusofsparta@protonmail.com), Jim Toth ([jim@artby.city](mailto:jim@artby.city)), Tom Wilson (tom@hyper.io), Michał Konopka (mike@warp.cc), et al (let's credit everyone who contributed)
 
 ## Abstract
 
@@ -58,23 +58,13 @@ tags.
 owner() => string | undefined
 ```
 - View state method - does not modify state
-- Returns the address of the current owner of the Atomic Asset (base64url)
+- Returns the address of the current owner of the Atomic Asset
 
 ```ts
 transferOwnership(to: string | undefined) => void
 ```
 
-- Transfers ownership of the Atomic Asset to address `to` (base64url)
+- Transfers ownership of the Atomic Asset to address `to`
 - Transfer of ownership to `undefined` is possible to delegate ownership to
   alternative mechanisms
 - SHOULD throw if the caller is not the current `owner`
-
-### State
-
-```ts
-owner: string | undefined
-```
-- Should be a 43 character base64url string representing the owner of the
-  atomic asset
-- Can be `undefined` to signal alternative ownership mechanisms (e.g. multiple
-  owners) or public domain ownership
