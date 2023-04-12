@@ -36,15 +36,21 @@ A typical Arweave provenance flow might work like this:
 
 ### Signaling Atomic Assets
 
-In order to query for Arweave transactions that are atomic assets, a tag is
-proposed to be included on all transactions that meet the technical definition
-of an atomic asset.  Below are two possible tags proposed by the community, to
-be decided upon.  Additional suggestions are welcome.
+In order to query for Arweave transactions that are atomic assets, it is
+encouraged to include specific tags in order to signal the transaction meets the
+technical definition of an atomic asset as described above.
+
+To accomplish this, a combination of two pre-existing tag specifications should
+be included on the atomic asset transaction: `App-Name` as required by
+SmartWeave and
+[ANS-110](https://github.com/ArweaveTeam/arweave-standards/blob/master/ans/ANS-110.md)
+tags.
 
 | Tag Name | _Optional?_ | Tag Value | Notes |
 |---|---|---|---|
-|`Indexed-By`|False|`atomic-asset`| Warp Contracts
-|`Type`|False|`atomic`| ANS-110
+|`App-Name`|False|`SmartWeaveContract`|
+|`Title`|False|A maximum of 150 characters used to identify the content, this title can provide a quick eye catching description of the asset| ANS-110
+|`Type`|False|The type of data of the atomic asset.  (e.g. `image`, `video`, etc.) | ANS-110
 
 ### Standard Interface
 
