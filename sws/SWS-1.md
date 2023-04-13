@@ -2,7 +2,10 @@
 
 **Status:** Draft `v0.0.1`
 
-**Authors:** Atticus (atticusofsparta@protonmail.com), Jim Toth ([jim@artby.city](mailto:jim@artby.city)), Tom Wilson (tom@hyper.io), Michał Konopka (mike@warp.cc), et al (let's credit everyone who contributed)
+**Authors:** Atticus (atticusofsparta@protonmail.com), Jim Toth
+([jim@artby.city](mailto:jim@artby.city)), Tom Wilson (tom@hyper.io),
+Michał Konopka (mike@warp.cc), Nik Rykov (nik@hns.is),
+Joe Berenbaum (joe@arceum.co), Dan MacDonald, et al
 
 ## Abstract
 
