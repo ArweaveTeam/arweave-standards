@@ -30,7 +30,7 @@ For issues regarding the repository itself, issues can be opened with no prefix.
 
 [2nd Layer Models](2nd-layer)
 
-
+[Arweave Wallet Extension API Standard](wallet-extension)
 
 
 
